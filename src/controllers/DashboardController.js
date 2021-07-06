@@ -1,5 +1,4 @@
 const Dashboard = require('../models/Dashboard');
-const axios = require('axios');
 
 module.exports = {
     async index(request, response){
@@ -32,5 +31,17 @@ module.exports = {
           })
 
           return response.json(dashboard);
+    },
+
+    async update(request, response){
+      sigla_dep = request.params.sigla_dep; 
+      newValue = request.body.value;
+
+      const novoValorRealizado = await Dashboard.findByIdAndUpdate("60df0e7a69631d0cc8294fdc", { 
+        "novoValorRealizado.controlmobile.dados_dashboard[0].value" : newValue
+    }, {new: true});  
+
+
     }
 }
+
