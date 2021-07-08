@@ -2,7 +2,7 @@ const Dashboard = require('../models/Dashboard');
 
 module.exports = {
     async index(request, response){
-        const dashboards = await Dashboard.find(); //Definir a ordenação: ordem alfabética ou % concluída.
+        const dashboards = await Dashboard.find().sort({"controlmobile.dados_dashboard": -1}); //Definir a ordenação: ordem alfabética ou % concluída.
         return response.json(dashboards);
     }, 
     //"2021-06-25T18:06:27.398+00:00"
