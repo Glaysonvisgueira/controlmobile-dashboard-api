@@ -3,6 +3,7 @@ const { Router } = require('express');
 const DashboardController = require('./controllers/DashboardController');
 const DashboardFaseDoisController = require('./controllers/DashboardFaseDoisController');
 const DepositoController = require('./controllers/DepositoController');
+const UserController = require('./controllers/UserController');
 
 const routes = Router();
 
@@ -15,6 +16,8 @@ routes.post('/dashboards/fasedois', DashboardFaseDoisController.store);
 
 routes.get('/depositos', DepositoController.index);
 routes.get('/depositos/:sigla_deposito', DepositoController.findDeposito);
+
+routes.get('/users', UserController.index);
 
 
 
