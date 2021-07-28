@@ -6,18 +6,22 @@ module.exports = {
     
     async findUser(request, response){
         
-        const { email, password } = request.body.userData;
+        const { email, password, nome } = request.body.userData;
         const user = await User.findOne({email: email});
 
         if(user && user.password === password){            
-            let tokenData = {
+            let userData = {
                 id: user._id,
-                email: user.email
+                email: user.email,
+                nome: user.nome,
+                sobrenome: user.sobrenome,
+                isAdmin: user.isAdmin
             }
-            let generatedToken = jwt.sign(tokenData, process.env.JWT_KEY, {expiresIn: '1m'});
-            response.json({                
+            let generatedToken = jwt.sign(userData, process.env.JWT_KEY, {expiresIn: '10m'});
+            return response.json({                
                 success: true,
-                token: generatedToken
+                token: generatedToken,   
+                userData             
             });
         }else{
             return response.json({message: "E-mail não cadastrado."});
