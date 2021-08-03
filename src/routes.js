@@ -19,8 +19,9 @@ routes.get('/depositos/:sigla_deposito', DepositoController.findDeposito);
 
 
 
-routes.post('/login', UserController.findUser);
-routes.get('/verificar-token', UserController.verificarToken);
+routes.post('/login', UserController.login);
+routes.post('/logout', UserController.logout);
+routes.get('/user', UserController.user);
 
 
 /* const jwt = require('jsonwebtoken');
