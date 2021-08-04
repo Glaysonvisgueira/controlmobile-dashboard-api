@@ -50,7 +50,7 @@ module.exports = {
 
         response.cookie('jwt', token, {
             httpOnly: true,
-            maxAge: 24 * 60 * 60 * 1000 // 1 day
+            maxAge: 600000 // 10 minutos
         })
     
         response.send({
