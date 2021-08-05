@@ -45,6 +45,8 @@ module.exports = {
                 message: 'Senha incorreta!'
             })
         }
+        
+        response.header("Access-Control-Allow-Origin", "*");
 
         const token = jwt.sign({_id: user._id}, process.env.JWT_KEY)
 
