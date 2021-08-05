@@ -10,6 +10,13 @@ const routes = require('./routes');
 const app = express();
 const server = http.Server(app);
 
+var corsOptions = {
+    origin: true,
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+  }
+
+app.use(cors(corsOptions));
+
 
 //URL do cluster no mongoDB
 mongoose.connect(`mongodb+srv://${process.env.USER_MONGODB}:${process.env.PASSWORD_MONGODB}@cluster0.r7qnp.mongodb.net/projetoreciclagem?retryWrites=true&w=majority`, {
@@ -21,11 +28,6 @@ mongoose.connect(`mongodb+srv://${process.env.USER_MONGODB}:${process.env.PASSWO
     console.log("Conexão com MongoDB não foi realizada com sucesso!");
     console.log("Erro: " + error)
 });
-
-app.use(cors({
-    credentials: true,
-    sameSite: true,
-    origin: ['http://localhost:3000', `http://${process.env.SERVER_ADRESS}`,'http://controlmobile-dashboard.s3-website-sa-east-1.amazonaws.com/','http://controlmobile-dashboard.s3-website-sa-east-1.amazonaws.com/login']}))
     
 app.use(cookieParser())
 app.use(express.json());
