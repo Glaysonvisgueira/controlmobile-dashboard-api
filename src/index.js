@@ -25,7 +25,7 @@ mongoose.connect(`mongodb+srv://${process.env.USER_MONGODB}:${process.env.PASSWO
 app.use(cors({
     credentials: true,
     sameSite: true,
-    origin: ['http://localhost:3000', `http://${process.env.SERVER_ADRESS}`]}))
+    origin: ['http://localhost:3000', `http://${process.env.SERVER_ADRESS}`,'http://controlmobile-dashboard.s3-website-sa-east-1.amazonaws.com/','http://controlmobile-dashboard.s3-website-sa-east-1.amazonaws.com/login']}))
     
 app.use(cookieParser())
 app.use(express.json());
