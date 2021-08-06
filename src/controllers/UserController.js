@@ -46,7 +46,7 @@ module.exports = {
             })
         }
 
-        const token = jwt.sign({ _id: user._id }, process.env.JWT_KEY)
+        const token = jwt.sign({ _id: user._id }, 'teste')
 
         response.cookie('jwt', token, {
             httpOnly: true,
