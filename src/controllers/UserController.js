@@ -4,18 +4,27 @@ require('dotenv').config()
 
 module.exports = {
 
-    /*  async login(request, response){
+    async login(request, response){
          
-         const { email, password, nome } = request.body.userData;
-         const user = await User.findOne({email: email});
+        const { email, password, nome } = request.body.userData;
+        const user = await User.findOne({email: email}); 
+
+        if (!user) {
+            return response.status(404).send({
+                message: 'E-mail não encontrado!'
+            })
+        }
+
+        if (password != user.password) {
+            return response.status(400).send({
+                message: 'Senha incorreta!'
+            })
+        }
  
          if(user && user.password === password){            
              let userData = {
                  id: user._id,
-                 email: user.email,
-                 nome: user.nome,
-                 sobrenome: user.sobrenome,
-                 isAdmin: user.isAdmin
+                 nome: user.nome 
              }
              let generatedToken = jwt.sign(userData, process.env.JWT_KEY, {expiresIn: '10m'});
              return response.json({                
@@ -23,13 +32,11 @@ module.exports = {
                  token: generatedToken,   
                  userData             
              });
-         }else{
-             return response.json({message: "E-mail não cadastrado."});
          }
      }
-      */
+      
 
-    async login(request, response) {
+   /*  async login(request, response) {
 
         const { email, password } = request.body;
         const user = await User.findOne({ email: email });
@@ -56,7 +63,7 @@ module.exports = {
         response.send({
             message: 'success'
         })
-    },
+    } */,
 
     async user(request, response) {
 
