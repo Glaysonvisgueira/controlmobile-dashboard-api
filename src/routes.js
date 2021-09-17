@@ -4,6 +4,7 @@ const DashboardController = require('./controllers/DashboardController');
 const DashboardFaseDoisController = require('./controllers/DashboardFaseDoisController');
 const DepositoController = require('./controllers/DepositoController');
 const UserController = require('./controllers/UserController');
+const PasswordController = require('./controllers/PasswordController');
 
 const routes = Router();
 
@@ -22,6 +23,9 @@ routes.get('/depositos/:sigla_deposito', DepositoController.findDeposito);
 routes.post('/login', UserController.login);
 routes.post('/logout', UserController.logout);
 routes.get('/user', UserController.user);
+
+routes.get('/senhas', PasswordController.index);
+routes.post('/senhas/cadastrar', PasswordController.store);
 
 
 /* const jwt = require('jsonwebtoken');
