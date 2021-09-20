@@ -26,6 +26,7 @@ routes.get('/user', UserController.user);
 
 routes.get('/senhas', PasswordController.index);
 routes.post('/senhas/cadastrar', PasswordController.store);
+routes.get('/senhas/:usuario', PasswordController.findSenhaResponsavel);
 
 
 /* const jwt = require('jsonwebtoken');
