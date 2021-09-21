@@ -5,6 +5,8 @@ const DashboardFaseDoisController = require('./controllers/DashboardFaseDoisCont
 const DepositoController = require('./controllers/DepositoController');
 const UserController = require('./controllers/UserController');
 const PasswordController = require('./controllers/PasswordController');
+const DashboardGprotminController = require('./controllers/DashboardGprotminController');
+const DashboardGpermutaController = require('./controllers/DashboardGpermutaController');
 
 const routes = Router();
 
@@ -14,6 +16,9 @@ routes.post('/update-dashboards/controlmobile/:sigla_dep', DashboardController.u
 
 routes.get('/dashboards/fasedois', DashboardFaseDoisController.index);
 routes.post('/dashboards/fasedois', DashboardFaseDoisController.store);
+routes.get('/dashboards/gprotmin', DashboardGprotminController.index);
+routes.get('/dashboards/gpermuta', DashboardGpermutaController.index);
+
 
 routes.get('/depositos', DepositoController.index);
 routes.get('/depositos/:sigla_deposito', DepositoController.findDeposito);
