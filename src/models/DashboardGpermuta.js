@@ -10,6 +10,7 @@ const DashboardGpermutaSchema = new mongoose.Schema({
         dados_dashboard: [{}],
         foto_url: {type: String},
         modalidade: { type: String, required: false},
+        tipo: { type: String, required: false}
     },  
 }, {timestamps: true});
 
