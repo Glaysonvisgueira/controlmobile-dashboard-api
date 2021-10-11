@@ -24,7 +24,7 @@ module.exports = {
         usuario = request.params.usuario;
         const senhas = await Password.find({
             responsavel: usuario.toUpperCase()
-        });
+        }).sort({ sigla_dep: 1 });
 
         if (!senhas) {
             return response.json({ "message": "Usuário não existe." })
